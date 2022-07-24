@@ -6,7 +6,7 @@ RUN apt-get update && apt-get upgrade -y
 
 # install node js and npm with apk
 RUN npm install -g npm@8.3.1
-RUN npm install -g yarn
+RUN corepack enable
 RUN npm install -g prettier
 
 # install extra packages
