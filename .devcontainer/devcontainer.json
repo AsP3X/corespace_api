@@ -19,11 +19,11 @@
         "path": "zsh"
       }
     },
-    "postCreateCommand": "npm install",
+    "postCreateCommand": "yarn install",
     "editor.cursorBlinking": "smooth",
     "editor.cursorSmoothCaretAnimation": true
   },
   "extensions": [
-
+	"JoelCrosby.one-dark-darker"
   ]
 }
