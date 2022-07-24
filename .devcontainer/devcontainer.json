@@ -1,0 +1,29 @@
+{
+  "name": "Corespace API",
+  "dockerFile": "Dockerfile",
+  "appPort": [
+    3000
+  ],
+  "runArgs": [
+    "-u",
+    "node"
+  ],
+  "settings": {
+    "workbench.colorTheme": "One Dark Darker",
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "bash",
+        "icon": "terminal-bash"
+      },
+      "zsh": {
+        "path": "zsh"
+      }
+    },
+    "postCreateCommand": "npm install",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": true
+  },
+  "extensions": [
+
+  ]
+}
