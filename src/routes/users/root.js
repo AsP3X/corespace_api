@@ -20,4 +20,6 @@ router.get("/", (req, res) => {
   });
 });
 
+console.log("Route: users/root.js loaded successfully!");
+
 module.exports = router;
