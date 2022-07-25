@@ -9,7 +9,7 @@
     "node"
   ],
   "settings": {
-    "workbench.colorTheme": "One Dark Darker",
+    "workbench.colorTheme": "one-dark-darker",
     "terminal.integrated.profiles.linux": {
       "bash": {
         "path": "bash",
@@ -24,13 +24,13 @@
     "editor.cursorSmoothCaretAnimation": true
   },
   "extensions": [
-	"JoelCrosby.one-dark-darker",
-	"GitHub.copilot",
-	"vscode-icons-team.vscode-icons",
-	"redhat.vscode-yaml",
-	"msjsdiag.vscode-react-native",
-	"ecmel.vscode-html-css",
-	"dbaeumer.vscode-eslint",
-	"donjayamanne.githistory"
-]
+    "JoelCrosby.one-dark-darker",
+    "GitHub.copilot",
+    "vscode-icons-team.vscode-icons",
+    "redhat.vscode-yaml",
+    "msjsdiag.vscode-react-native",
+    "ecmel.vscode-html-css",
+    "dbaeumer.vscode-eslint",
+    "donjayamanne.githistory"
+  ]
 }
