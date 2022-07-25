@@ -13,4 +13,6 @@ router.get("/", (req, res) => {
   });
 });
 
+console.log("Route: healthcheck/root.js loaded successfully!");
+
 module.exports = router;

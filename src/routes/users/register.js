@@ -65,4 +65,6 @@ router.post('/register', (req, res) => {
   }
 });
 
+console.log("Route: users/register.js loaded successfully!");
+
 module.exports = router;
