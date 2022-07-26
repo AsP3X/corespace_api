@@ -24,7 +24,7 @@
     "editor.cursorSmoothCaretAnimation": true
   },
   "extensions": [
-    "JoelCrosby.one-dark-darker",
+    "AsP3X.corespace-darker",
     "GitHub.copilot",
     "vscode-icons-team.vscode-icons",
     "redhat.vscode-yaml",
