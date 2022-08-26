@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
 
@@ -17,6 +18,7 @@ server.use(express.urlencoded({ extended: true }));
 
 // Loading custom modules
 const getAllRoutes = require('./assets/utils/getAllRoutes');
+const dbc = require('./assets/database/dbConnector');
 
 // setting allowed headers
 server.use((req, res, next) => {
@@ -31,6 +33,9 @@ server.use((req, res, next) => {
 
   next();
 });
+
+// Preparing database
+dbc.mongo_connect();
 
 const apiRoutes = getAllRoutes(ROUTES_PATH);
 const apiRouteKeys = Object.keys(apiRoutes)
