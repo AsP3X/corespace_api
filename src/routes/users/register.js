@@ -42,6 +42,9 @@ function validation(userdata) {
   };
 }
 
+function registerUser(username, email, password) {
+}
+
 // Registration route handler
 router.post('/register', (req, res) => {
   const { username, email, password } = req.body;
