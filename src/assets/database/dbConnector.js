@@ -1,20 +1,26 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+// const errorHandlerLogger = require('../logging/errorHandler');
 
-dotenv.config();
+const dbc = {};
 
-const dbConnector = {}
-
-dbConnector.connectetAllRoutes = (database) => {
-  const DBUser = process.env.DB_USER;
-  const DBPassword = process.env.DB_PASSWORD;
-  const DBHost = process.env.DB_HOST;
-  const DBPort = process.env.DB_PORT;
-  const DB = database || process.env.DB;
-
-  // mongoose.connect('mongodb://username:password@host:port/database?options...');
-  mongoose.connect(`mongodb://${DBUser}:${DBPassword}@${DBHost}:${DBPort}/${DB}`, (err) => {
-    if (err) { console.log(err); return}
-    console.log("Database connection established");
-  });
+function handleError(err) {
+  console.log('Error: ', err);
+  errorHandlerLogger.error(err);
 }
+
+// Create mongoose db connection
+dbc.mongo_connect = () => {
+  // const mongoURI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+  const mongoURI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+
+  try {
+    // mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(mongoURI, { useNewUrlParser: true });
+    console.log(`Ehrekonto: connected to MongoDB at ${process.env.DB_HOST}`);
+  } catch (error) {
+    // handleError(error);
+    console.error(error);
+  }
+}
+
+module.exports = dbc;
