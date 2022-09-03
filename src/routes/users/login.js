@@ -12,8 +12,8 @@ const validator = require('../../assets/validation/validateUserData');
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
-  if (!email || !password) { res.sendStatus(400); return; }
-  if (validator.validateEmail(email)) { res.sendStatus(400); return; }
+  if (!email || !password) { res.sendStatus(403); return; }
+  if (validator.validateEmail(email)) { res.sendStatus(403); return; }
   res.send({
     success: true,
     message: "Login successful!",
