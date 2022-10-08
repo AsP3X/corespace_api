@@ -6,10 +6,10 @@ const fs = require('fs');
 const router = express.Router();
 
 // Create the database product route
-router.get("/", (req, res) => {
+router.get("/database", (req, res) => {
   res.status(200).json({
     healthy: true,
-    uptime: process.uptime()
+    message: "Database is healthy"
   });
 });
 
