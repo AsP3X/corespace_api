@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 // Import models
 const AuthToken = require('../../models/authToken.js');
+const Users = require('../../models/users.js');
 
 class DBCommit {
-  isValidated = false;
 
   constructor(database, authToken) {
     this.database = database;
@@ -12,7 +12,6 @@ class DBCommit {
   }
 
   auth() {
-
     AuthToken.findOne({ authToken: this.authToken }).exec()
       .then(authToken => {
         
@@ -22,6 +21,12 @@ class DBCommit {
 
     if (this.authToken = "ifu9nz4w8") return true
     return false;
+  }
+
+  createUser(userObj) {
+    const username = userObj.username;
+    const password = userObj.password;
+    const email = userObj.email;
   }
 
 }
