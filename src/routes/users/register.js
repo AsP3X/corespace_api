@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Import custom modules
 const validator = require('../../assets/validation/validateUserData.js');
+const crypter = require('../../assets/utils/crypter.js');
 const DBCommit = require('../../assets/database/dbCommit.js');
 
 // Check the validation results of the user data and returning a json response
@@ -45,7 +46,7 @@ async function registerUser(res, username, email, password) {
   const dbCommit = new DBCommit();
   let result = await dbCommit.createUser({
     username: username,
-    password: password,
+    password: crypter.encrypt(password),
     email: email,
     created: Date.now()
   });
