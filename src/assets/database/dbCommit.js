@@ -43,6 +43,14 @@ class DBCommit {
     });
   }
 
+  getAllUsers() {
+    return Users.find().exec().then(result => {
+      return result;
+    }).catch(err => {
+      return err;
+    });
+  }
+
 }
 
 module.exports = DBCommit;
