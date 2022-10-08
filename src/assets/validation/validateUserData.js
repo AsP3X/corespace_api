@@ -7,7 +7,7 @@ validator.validateUsername = (username) => {
 }
 
 validator.validatePassword = (password) => {
-  if (password.length < 8 || password.length > 100) { return "Password must be between 3 and 100 characters long!"; }
+  if (password.length < 8 || password.length > 100) { return "Password must be between 8 and 100 characters long!"; }
   if (!password.match(/\d/)) { return "Password must include at least one number!"; }
   if (!password.match(/[a-z]/)) { return "Password must include at least one small character!"; }
   if (!password.match(/[A-Z]/)) { return "Password must include at least one big character!"; }
