@@ -43,6 +43,15 @@ class DBCommit {
     });
   }
 
+  getUserData(email) {
+    return Users.findOne({ email: email }).exec().then(result => {
+      if (!result) return false;
+      return result;
+    }).catch(err => {
+      return false;
+    });
+  }
+
   getAllUsers() {
     return Users.find().exec().then(result => {
       return result;
