@@ -8,6 +8,7 @@ const router = express.Router();
 const validator = require('../../assets/validation/validateUserData.js');
 const crypter = require('../../assets/utils/crypter.js');
 const DBCommit = require('../../assets/database/dbCommit.js');
+const dataFilter = require('../../assets/utils/dataFilter.js');
 
 // Check the validation results of the user data and returning a json response
 function validation(userdata) {
@@ -55,14 +56,14 @@ async function registerUser(res, username, email, password) {
   if (result.code) {
     res.send({
       status: false,
-      message: result.errmsg,
+      message: "Registration failed",
       timestamp: Date.now()
     });
   } else {
     res.send({
       status: true,
       message: "User created",
-      result: result,
+      result: dataFilter.personalData(result, "default"),
       timestamp: Date.now()
     });
   }
