@@ -1,13 +1,12 @@
 const express = require('express');
-const path = require('path');
 const fs = require('fs');
-const { Server } = require('http');
 
 // Importing router
 const router = express.Router();
 
 // Import custom modules
 const validator = require('../../assets/validation/validateUserData.js');
+const DBCommit = require('../../assets/database/dbCommit.js');
 
 // Check the validation results of the user data and returning a json response
 function validation(userdata) {
@@ -42,7 +41,30 @@ function validation(userdata) {
   };
 }
 
-function registerUser(username, email, password) {
+async function registerUser(res, username, email, password) {
+  const dbCommit = new DBCommit();
+  let result = await dbCommit.createUser({
+    username: username,
+    password: password,
+    email: email,
+    created: Date.now()
+  });
+
+  // check if the result returns an error
+  if (result.code) {
+    res.send({
+      status: false,
+      message: result.errmsg,
+      timestamp: Date.now()
+    });
+  } else {
+    res.send({
+      status: true,
+      message: "User created",
+      result: result,
+      timestamp: Date.now()
+    });
+  }
 }
 
 // Registration route handler
@@ -57,9 +79,7 @@ router.post('/register', (req, res) => {
   const validationResult = validation(userDataObj);
 
   if (validationResult.status) {
-    res.status(200).json({
-      message: "User registered successfully"
-    });
+    result = registerUser(res, username, email, password);
   } else {
     res.status(400).json({
       message: "User registration failed",

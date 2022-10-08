@@ -27,6 +27,20 @@ class DBCommit {
     const username = userObj.username;
     const password = userObj.password;
     const email = userObj.email;
+
+    let user = new Users({
+      _id: new mongoose.Types.ObjectId(),
+      username: username,
+      password: password,
+      email: email,
+      created: Date.now()
+    });
+
+    return user.save().then(result => {
+      return result;
+    }).catch(err => {
+      return err;
+    });
   }
 
 }
