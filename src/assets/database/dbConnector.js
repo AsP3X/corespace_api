@@ -31,4 +31,21 @@ dbc.mongo_connect = () => {
   }
 }
 
+dbc.mongo_connect_dev = () => {
+  console.log('Connecting to MongoDB...');
+  console.log('MongoDB URI: ', process.env.D_DB_USER);
+
+  // const mongoURI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+  const mongoURI = `mongodb://${process.env.D_DB_USER}:${process.env.D_DB_PASSWORD}@${process.env.D_DB_HOST}/${process.env.D_MONGO_DB}?retryWrites=true&w=majority`;
+
+  try {
+    // mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(mongoURI, { useNewUrlParser: true });
+    console.log(`Ehrekonto: connected to MongoDB at ${process.env.D_DB_HOST}`);
+  } catch (error) {
+    // handleError(error);
+    console.error(error);
+  }
+};
+
 module.exports = dbc;

@@ -8,9 +8,13 @@ const fs = require('fs');
 const server = express();
 dotenv.config();
 
+// get run arguments
+const args = process.argv.slice(2);
+
 // Load configuration
 const PORT = process.env.PORT || 3000;
 const ROUTES_PATH = path.join(__dirname, `routes`);
+let RunMode = 'dev';
 
 // Add middleware to parse the body of the request
 server.use(express.json());
@@ -35,7 +39,15 @@ server.use((req, res, next) => {
 });
 
 // Preparing database
-dbc.mongo_connect();
+if (args.includes('-m')) {
+  RunMode = args[args.indexOf('-m') + 1];
+}
+
+if (RunMode === 'dev') {
+  dbc.mongo_connect_dev();
+} else {
+  dbc.mongo_connect();
+}
 
 const apiRoutes = getAllRoutes(ROUTES_PATH);
 const apiRouteKeys = Object.keys(apiRoutes)
